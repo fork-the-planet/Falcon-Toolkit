@@ -789,12 +789,12 @@ class RTRPrompt(Cmd):
             )
             out_filename = output_file_name(get_file, hostname)
             full_filepath = os.path.join(args.destination, out_filename)
-            with click_spinner.spinner():
-                get_file.download(
-                    output_path=full_filepath,
-                    extract=args.extract_7z,
-                    preserve_7z=False,
-                )
+            get_file.download(
+                output_path=full_filepath,
+                extract=args.extract_7z,
+                preserve_7z=False,
+                show_download_progress=True,
+            )
             details = (
                 f"destination={args.destination} | "
                 f"extracted={str(args.extract_7z)} | "
